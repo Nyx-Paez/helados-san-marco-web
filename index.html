@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Helados San Marco | Heladería Artesanal en Pilar</title>
+    <meta name="description" content="Descubrí el auténtico helado artesanal en Pilar en San Marco. Tradición, sabor intenso y los mejores ingredientes. ¡Mirá nuestros sabores y pedí delivery por PedidosYa!">
+    <link rel="icon" type="image/png" href="img/favicon.png">
+
+    <meta property="og:title" content="Helados San Marco - Tradición Artesanal en Pilar">
+    <meta property="og:description" content="¿Antojo de algo rico? Descubrí nuestros auténticos helados artesanales, mirá los sabores y pedí online.">
+    <meta property="og:image" content="https://heladossanmarco.com.ar/img/portada-social.png">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://heladossanmarco.com.ar/">
+    <meta property="og:locale" content="es_AR">
+    <meta property="og:site_name" content="Helados San Marco">
+
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "IceCreamShop",
+      "@id": "https://heladossanmarco.com.ar",
+      "name": "Helados San Marco",
+      "image": [
+        "https://heladossanmarco.com.ar/img/fachada.webp",
+        "https://heladossanmarco.com.ar/img/logo-sinfondo.png"
+       ],
+      "description": "Auténtico helado artesanal en Pilar. Tradición, sabor intenso y los mejores ingredientes.",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Pedro Lagrave 456",
+        "addressLocality": "Pilar",
+        "addressRegion": "Buenos Aires",
+        "postalCode": "1629",
+        "addressCountry": "AR"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": -34.4576,
+        "longitude": -58.9138
+      },
+      "telephone": "+5402304428008",
+      "priceRange": "$$",
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Tuesday", "Wednesday", "Thursday", "Friday"],
+          "opens": "14:00",
+          "closes": "23:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "Saturday",
+          "opens": "13:00",
+          "closes": "00:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "Sunday",
+          "opens": "13:00",
+          "closes": "23:00"
+        }
+      ],
+      "servesCuisine": "Helado Artesanal",
+      "paymentAccepted": "Cash, Credit Card, PedidosYa",
+      "url": "https://heladossanmarco.com.ar"
+    }
+    </script>
+</head>
+<body>
+
+    <header>
+        <div class="container nav-container">
+            <a href="#inicio" class="logo-link">
+                <img src="img/logo-sinfondo.png" alt="Helados San Marco Logo" class="nav-logo">
+            </a>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#nosotros">Nosotros</a></li>
+                    <li><a href="#menu">Sabores</a></li>
+                    <li><a href="#ubicacion">Ubicación y Horarios</a></li>
+                    <li><a href="https://www.pedidosya.com.ar/restaurantes/pilar/helados-san-marco-menu" target="_blank" class="btn btn-sm btn-pedidosya">Pedir Ahora</a></li>
+                </ul>
+                <div class="menu-toggle"><i class="fas fa-bars"></i></div>
+            </nav>
+        </div>
+    </header>
+
+    <section id="inicio" class="hero">
+        <div class="hero-overlay">
+            <div class="container hero-content">
+                
+                <div id="status-container" style="margin-bottom: 20px;">
+                    <div id="status-badge" class="status-badge loading">
+                        <span class="status-dot"></span> <span id="status-text">Consultando...</span>
+                    </div>
+                    <div id="aviso-manual" class="aviso-diario" style="display:none;"></div>
+                </div>
+
+                <h1>Auténtico Helado Artesanal</h1>
+                <p>La tradición y el sabor intenso que nos caracteriza.</p>
+
+                <div class="hero-pricing-container">
+                    <h3 class="pricing-title">Nuestros Precios</h3>
+
+                    <div class="pricing-toggle">
+                        <input type="radio" name="price-switch" id="switch-mostrador" checked>
+                        <label for="switch-mostrador" class="toggle-label">Mostrador <small>(En el local)</small></label>
+                        
+                        <input type="radio" name="price-switch" id="switch-pedidosya">
+                        <label for="switch-pedidosya" class="toggle-label">PedidosYa <small>(Delivery)</small></label>
+                        
+                        <div class="toggle-slider"></div>
+                    </div>
+
+                    <div class="pricing-content content-mostrador">
+                        <div class="price-grid pots">
+                            <div class="price-item">
+                                <div class="price-icon-svg small">
+                                    <svg viewBox="0 0 100 100"><path d="M20,30 L30,90 L70,90 L80,30 Z M15,20 L85,20 L85,30 L15,30 Z" fill="var(--color-primary)" opacity="0.8"/></svg>
+                                    <span>1/4 kg</span>
+                                </div>
+                                <div class="price-details"><span class="price-value">$6.000</span></div>
+                            </div>
+                             <div class="price-item">
+                                <div class="price-icon-svg medium">
+                                     <svg viewBox="0 0 100 100"><path d="M18,28 L32,92 L68,92 L82,28 Z M12,18 L88,18 L88,28 L12,28 Z" fill="var(--color-primary)" opacity="0.8"/></svg>
+                                    <span>1/2 kg</span>
+                                </div>
+                                <div class="price-details"><span class="price-value">$9.500</span></div>
+                            </div>
+                             <div class="price-item">
+                                <div class="price-icon-svg large">
+                                    <svg viewBox="0 0 100 100"><path d="M15,25 L35,95 L65,95 L85,25 Z M10,15 L90,15 L90,25 L10,25 Z" fill="var(--color-primary)" opacity="0.8"/></svg>
+                                    <span>3/4 kg</span>
+                                </div>
+                                <div class="price-details"><span class="price-value">$14.000</span></div>
+                            </div>
+                             <div class="price-item">
+                                <div class="price-icon-svg xlarge">
+                                     <svg viewBox="0 0 100 100"><path d="M12,22 L38,98 L62,98 L88,22 Z M8,12 L92,12 L92,22 L8,22 Z" fill="var(--color-primary)" opacity="0.8"/></svg>
+                                    <span>1 kg</span>
+                                </div>
+                                <div class="price-details"><span class="price-value">$16.500</span></div>
+                            </div>
+                        </div>
+
+                        <div class="price-deals">
+                            <div class="deal-item"><span class="deal-tag">Promo!</span> 2 Kilos: <strong>$31.000</strong></div>
+                            <div class="deal-item"><span class="deal-tag">Promo!</span> 3 Kilos: <strong>$45.000</strong></div>
+                        </div>
+
+                        <h4 class="prices-subtitle">Para disfrutar al paso</h4>
+                        <div class="price-grid singles">
+                            <div class="price-item mini">
+                                <svg class="single-icon" viewBox="0 0 50 50"><path d="M15,45 L10,10 L40,10 L35,45 Z" fill="var(--color-primary)"/></svg>
+                                Vasito Chico <strong>$3.000</strong>
+                            </div>
+                            <div class="price-item mini">
+                                <svg class="single-icon" viewBox="0 0 50 50" style="transform: scale(1.2);"><path d="M15,45 L10,10 L40,10 L35,45 Z" fill="var(--color-primary)"/></svg>
+                                Vasito Mediano <strong>$3.200</strong>
+                            </div>
+                            <div class="price-item mini">
+                                <svg class="single-icon" viewBox="0 0 50 50"><path d="M10,15 L15,45 L35,45 L40,15 Z" fill="var(--color-primary)"/></svg>
+                                Tacita <strong>$3.500</strong>
+                            </div>
+                            <div class="price-item mini">
+                                <i class="fas fa-ice-cream icon-orange"></i> Cucurucho <strong>$5.300</strong>
+                            </div>
+                        </div>
+                    </div> 
+                    
+                    <div class="pricing-content content-pedidosya">
+                        <div class="price-grid pots">
+                            <div class="price-item">
+                                <div class="price-icon-svg small">
+                                    <svg viewBox="0 0 100 100"><path d="M20,30 L30,90 L70,90 L80,30 Z M15,20 L85,20 L85,30 L15,30 Z" fill="var(--color-primary)" opacity="0.8"/></svg>
+                                    <span>1/4 kg</span>
+                                </div>
+                                <div class="price-details"><span class="price-value">$7.000</span></div>
+                            </div>
+                             <div class="price-item">
+                                <div class="price-icon-svg medium">
+                                     <svg viewBox="0 0 100 100"><path d="M18,28 L32,92 L68,92 L82,28 Z M12,18 L88,18 L88,28 L12,28 Z" fill="var(--color-primary)" opacity="0.8"/></svg>
+                                    <span>1/2 kg</span>
+                                </div>
+                                <div class="price-details"><span class="price-value">$11.700</span></div>
+                            </div>
+                             <div class="price-item">
+                                <div class="price-icon-svg large">
+                                    <svg viewBox="0 0 100 100"><path d="M15,25 L35,95 L65,95 L85,25 Z M10,15 L90,15 L90,25 L10,25 Z" fill="var(--color-primary)" opacity="0.8"/></svg>
+                                    <span>3/4 kg</span>
+                                </div>
+                                <div class="price-details"><span class="price-value">$16.000</span></div>
+                            </div>
+                             <div class="price-item">
+                                <div class="price-icon-svg xlarge">
+                                     <svg viewBox="0 0 100 100"><path d="M12,22 L38,98 L62,98 L88,22 Z M8,12 L92,12 L92,22 L8,22 Z" fill="var(--color-primary)" opacity="0.8"/></svg>
+                                    <span>1 kg</span>
+                                </div>
+                                <div class="price-details"><span class="price-value">$19.000</span></div>
+                            </div>
+                        </div>
+
+                        <div class="price-deals">
+                            <div class="deal-item"><span class="deal-tag">Promo!</span> 2 Kilos: <strong>$36.000</strong></div>
+                            <div class="deal-item"><span class="deal-tag">Promo!</span> 3 Kilos: <strong>$52.000</strong></div>
+                        </div>
+
+                        <h4 class="prices-subtitle">Extras para llevar</h4>
+                        <p style="font-size: 0.9rem; color: #ccc;">*Opciones de cucuruchos y tacitas vacías disponibles en la app.</p>
+                    </div> 
+                </div> <div class="delivery-cta-box">
+                    <h3>¿Querés disfrutar en casa?</h3>
+                    <a href="https://www.pedidosya.com.ar/restaurantes/pilar/helados-san-marco-menu" target="_blank" class="btn btn-pedidosya">
+                        <i class="fas fa-motorcycle"></i> Pedir por Pedidos Ya
+                    </a>
+                    <p class="delivery-note">*Envíos a Domicilio solo a través de PedidosYa</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="nosotros" class="section-padding bg-dark">
+        <div class="container about-grid">
+            <div class="about-text">
+                <h2 class="section-title">Nuestra Pasión</h2>
+                <p>En <strong>San Marco</strong>, creemos que el helado es más que un postre; es un momento de felicidad. Desde nuestros inicios, nos dedicamos a elaborar cremas heladas con las mejores materias primas, respetando los procesos artesanales que garantizan una textura única y un sabor inolvidable.</p>
+                <p>Vení a conocer nuestro local y disfrutá de la verdadera experiencia San Marco.</p>
+            </div>
+            <div class="about-image">
+                <img src="img/fachada.webp" loading="lazy" alt="Fachada Heladería San Marco en Pilar">
+            </div>
+        </div>
+    </section>
+
+    <section id="menu" class="section-padding bg-darker">
+        <div class="container">
+            <h2 class="section-title text-center">Sabores Destacados</h2>
+            <p class="text-center subtitle">Una selección de nuestros clásicos.</p>
+            
+            <div class="menu-grid">
+                <div class="menu-card">
+                    <img src="img/gustos/cremasanmarco.webp" loading="lazy" alt="Helado sabor Crema San Marco">
+                    <div class="menu-card-content">
+                        <h3>Crema San Marco</h3>
+                        <p>Nuestra crema insignia. Vainilla, dulce de leche y merengues.</p>
+                    </div>
+                </div>
+                <div class="menu-card">
+                    <img src="img/gustos/DDLgranizado.webp" loading="lazy" alt="Helado sabor Dulce de Leche Granizado">
+                    <div class="menu-card-content">
+                        <h3>Dulce de Leche Granizado</h3>
+                        <p>El clásico argentino. Dulce de leche con lluvia de granizado de chocolate.</p>
+                    </div>
+                </div>
+                <div class="menu-card">
+                    <img src="img/gustos/sambayon.webp" loading="lazy" alt="Helado sabor Sambayón">
+                    <div class="menu-card-content">
+                        <h3>Sambayón</h3>
+                        <p>Crema elaborada con yemas de huevo y vino Marsala. Un sabor para entendidos.</p>
+                    </div>
+                </div>
+                <div class="menu-card">
+                    <img src="img/gustos/frutosdelbosque.webp" loading="lazy" alt="Helado sabor Frutos del Bosque">
+                    <div class="menu-card-content">
+                        <h3>Frutos del Bosque</h3>
+                        <p>Refrescante al agua con mix de frutos rojos.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-4">
+                <p class="delivery-disclaimer" style="margin-bottom: 15px;">Explorá nuestros 44 sabores artesanales.</p>
+                <button onclick="abrirMenu()" class="btn btn-pedidosya">
+                    <i class="fas fa-book-open"></i> Ver Menú Completo
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <section id="ubicacion" class="section-padding bg-dark">
+        <div class="container">
+            <h2 class="section-title text-center">Dónde Estamos</h2>
+            
+            <div class="info-grid">
+                <div class="info-card">
+                   <i class="fas fa-map-marker-alt info-icon"></i>
+                   <h3>Dirección</h3>
+                   <p>Pedro Lagrave 456,<br>Pilar, Buenos Aires.</p>
+                </div>
+                <div class="info-card">
+                    <i class="far fa-clock info-icon"></i>
+                    <h3>Horarios de Atención</h3>
+                    <p>Martes a Viernes: 14:00 a 23:00 hs</p>
+                    <p>Sábados: 13:00 a 00:00 hs</p>
+                    <p>Domingos: 13:00 a 23:00 hs</p>
+                </div>
+                <div class="info-card">
+                    <i class="fas fa-phone-alt info-icon"></i>
+                    <h3>Contacto</h3>
+                    <p>0230 442-8008</p>
+                </div>
+            </div>
+
+            <div class="map-container mt-4">
+                 <iframe 
+                    width="100%" 
+                    height="400" 
+                    style="border:0;" 
+                    loading="lazy" 
+                    allowfullscreen
+                    title="Mapa de ubicación de Helados San Marco en Pilar"
+                    src="https://maps.google.com/maps?q=Pedro%20Lagrave%20456%2C%20Pilar%2C%20Buenos%20Aires&t=&z=15&ie=UTF8&iwloc=&output=embed">
+                 </iframe>
+            </div>
+
+        </div>
+    </section>
+
+    <footer>
+        <div class="container footer-content">
+            <img src="img/logo-sinfondo.png" alt="San Marco Logo" class="footer-logo">
+            <p>© 2025 Helados San Marco. Todos los derechos reservados.</p>
+            <p class="footer-disclaimer">Envíos a domicilio exclusivamente a través de la plataforma Pedidos Ya.</p>
+        </div>
+    </footer>
+
+    <div id="modal-menu" class="modal-overlay">
+        <div class="modal-content">
+            <button class="close-modal" onclick="cerrarMenu()">×</button>
+            
+            <div class="modal-header">
+                <h2>Nuestra Carta</h2>
+                <p>Elegí tus favoritos</p>
+            </div>
+
+            <div class="menu-tabs">
+                <button class="tab-btn active" onclick="filtrarMenu('todos')">Todos</button>
+                <button class="tab-btn" onclick="filtrarMenu('crema')">Cremas</button>
+                <button class="tab-btn" onclick="filtrarMenu('frutal')">Frutales</button>
+            </div>
+
+            <div class="modal-grid" id="modal-grid-sabores"></div>
+            
+            <div class="modal-footer-action">
+                <p>¿Ya te tentaste?</p>
+                <a href="https://www.pedidosya.com.ar/restaurantes/pilar/helados-san-marco-menu" target="_blank" class="btn btn-pedidosya">Pedir Ahora</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,1138 @@
+/* --- VARIABLES CSS --- */
+:root {
+    /* Colores basados en el logo */
+    --color-primary: #FF4500; /* Naranja rojizo del logo */
+    --color-primary-dark: #cc3700;
+    --color-dark: #121212;    /* Negro casi puro */
+    --color-darker: #080808;  /* Fondo aún más oscuro */
+    --color-light: #ffffff;
+    --color-grey: #b3b3b3;
+
+    /* Tipografías */
+    --font-heading: 'Playfair Display', serif; 
+    --font-body: 'Roboto', sans-serif; 
+}
+
+/* --- RESET Y ESTILOS BASE --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth; /* Desplazamiento suave al hacer clic en el menú */
+}
+
+body {
+    font-family: var(--font-body);
+    background-color: var(--color-dark);
+    color: var(--color-light);
+    line-height: 1.6;
+}
+
+h1, h2, h3 {
+    font-family: var(--font-heading);
+    color: var(--color-light);
+}
+
+h2.section-title {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    text-align: center;
+    /* Pequeña línea naranja debajo de los títulos */
+    position: relative;
+    padding-bottom: 15px;
+}
+h2.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background-color: var(--color-primary);
+}
+
+p.subtitle {
+    color: var(--color-grey);
+    margin-bottom: 3rem;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+ul {
+    list-style: none;
+}
+img {
+    max-width: 100%;
+    display: block;
+}
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+.section-padding {
+    padding: 80px 0;
+}
+.bg-dark { background-color: var(--color-dark); }
+.bg-darker { background-color: var(--color-darker); }
+.text-center { text-align: center; }
+.mt-4 { margin-top: 2rem; }
+
+/* --- BOTONES --- */
+.btn {
+    display: inline-block;
+    padding: 12px 24px;
+    border-radius: 50px;
+    font-weight: 700;
+    font-family: var(--font-body);
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+}
+/* --- BOTÓN PRINCIPAL "PEDIR AHORA" --- */
+.btn-pedidosya {
+    /* Usamos un degradado sutil en vez de color plano para dar volumen */
+    background: linear-gradient(135deg, var(--color-primary) 0%, #ff7b52 100%);
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 1.5px; /* Letras más separadas */
+    font-weight: 800; /* Texto más fuerte */
+    border: none;
+    /* Sombra naranja suave inicial */
+    box-shadow: 0 4px 15px rgba(255, 69, 0, 0.3);
+    position: relative;
+    overflow: hidden; /* Para el efecto de destello */
+    z-index: 1;
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1); /* Transición elástica */
+}
+
+/* Efecto Hover: Se agranda, sube y la sombra se intensifica */
+.btn-pedidosya:hover {
+    transform: translateY(-3px) scale(1.03); /* Crece un poquito */
+    box-shadow: 0 12px 25px rgba(255, 69, 0, 0.5); /* Sombra intensa y difusa */
+}
+
+/* Destello sutil al pasar el mouse (Efecto premium) */
+.btn-pedidosya::before {
+    content: '';
+    position: absolute;
+    top: 0; left: -100%;
+    width: 100%; height: 100%;
+    /* Una barra de luz diagonal transparente */
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    transition: 0.6s;
+    z-index: -1;
+}
+.btn-pedidosya:hover::before {
+    left: 100%; /* La luz cruza el botón */
+}
+
+.btn-lg { padding: 15px 35px; font-size: 1.1rem; }
+.btn-sm { padding: 8px 20px; font-size: 0.9rem; }
+
+/* ACLARACIÓN DE DELIVERY */
+.delivery-disclaimer {
+    font-size: 0.85rem;
+    color: var(--color-grey);
+    margin-top: 10px;
+    font-style: italic;
+}
+
+/* --- HEADER (LOGOTIPO GRANDE, PROPORCIONAL Y LUCES ADAPTABLES) --- */
+/* --- HEADER CON TEXTURA DE CHAPA ACANALADA VERTICAL --- */
+header {
+    /* Base oscura */
+    background-color: rgba(25, 25, 25, 0.9);
+    
+    /* TEXTURA: Simulación de paneles verticales con volumen */
+    background-image: repeating-linear-gradient(
+        90deg,          /* Dirección del degradado */
+        #1a1a1a,        /* Color base oscuro (la parte "honda") */
+        #1a1a1a 10px,
+        #2a2a2a 15px,   /* Color más claro (la parte "elevada" que recibe luz) */
+        #2a2a2a 35px,
+        #111111 40px    /* Sombra fuerte al final del panel */
+    );
+
+    /* Mantenemos el efecto de desenfoque */
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    
+    /* --- Resto de las propiedades necesarias (NO BORRAR) --- */
+    padding: 15px 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 1px solid rgba(255, 69, 0, 0.2); /* Un borde naranja sutil ayuda a esta textura */
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* --- ESTADO SCROLLED --- */
+header.scrolled {
+    background-color: rgba(18, 18, 18, 0.98);
+    padding: 10px 0; /* Header finito */
+    border-bottom: 1px solid #333;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+}
+
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* --- CONTENEDOR DEL LOGO --- */
+.logo-link {
+    position: relative;
+    /* CLAVE: inline-flex hace que la caja se ajuste al ancho de la imagen */
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    padding: 10px 0; /* Espacio para las luces */
+    transition: all 0.4s ease;
+}
+
+/* --- LUCES DELIMITADORAS DE ANCHO COMPLETO --- */
+/* Estilos comunes para la barra superior e inferior */
+header::before,
+header::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    width: 100%; /* Ocupan todo el ancho de la pantalla */
+    height: 4px; /* Mantenemos el grosor */
+    background: white; /* Color inicial blanco */
+    /* El mismo efecto de resplandor blanco que tenías */
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
+    transition: all 0.4s ease;
+    z-index: 1001; /* Aseguramos que queden por encima del fondo */
+}
+
+/* Posición de la barra SUPERIOR (pegada al borde de arriba) */
+header::before {
+    top: 0;
+}
+
+/* Posición de la barra INFERIOR (pegada al borde de abajo) */
+header::after {
+    bottom: 0;
+}
+
+/* --- EFECTO HOVER EN TODO EL HEADER --- */
+/* Cuando pasas el mouse por CUALQUIER parte del header, las luces cambian */
+header:hover::before,
+header:hover::after {
+    background: var(--color-primary); /* Se vuelven naranjas */
+    /* El mismo efecto de resplandor naranja intenso que tenías */
+    box-shadow: 0 0 20px rgba(255, 69, 0, 1);
+}
+
+
+/* ESTADO SCROLLED (PEQUEÑO): LUCES MÁS FINAS */
+header.scrolled .logo-link::before,
+header.scrolled .logo-link::after {
+    /* El ancho sigue siendo 100%, se adapta solo al logo más chico */
+    height: 2px;
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
+}
+
+
+/* --- LA IMAGEN DEL LOGO (PROPORCIÓN NATURAL Y GRANDE) --- */
+.nav-logo {
+    display: block;
+    /* Mantenemos proporciones naturales para no deformar */
+    width: auto;  
+    height: auto; 
+    /* TAMAÑO MÁXIMO INICIAL */
+    max-height: 170px; 
+    
+    transition: all 0.4s ease;
+}
+
+/* ESTADO SCROLLED (PEQUEÑO): IMAGEN SE ACHICA PROPORCIONALMENTE */
+header.scrolled .nav-logo {
+    max-height: 70px; 
+}
+
+/* Navegación */
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+/* --- ESTILOS DE ENLACES DEL MENÚ (PC) --- */
+.nav-links a:not(.btn) {
+    position: relative; /* Necesario para el efecto de línea */
+    font-weight: 700; /* Un poco más grueso y llamativo */
+    text-transform: uppercase;
+    font-size: 0.95rem;
+    letter-spacing: 1.2px;
+    padding: 5px 0;
+    transition: color 0.3s ease;
+}
+
+/* La línea naranja que aparecerá debajo */
+.nav-links a:not(.btn)::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%; /* Comienza desde el centro */
+    width: 0;  /* Ancho inicial cero (invisible) */
+    height: 2px; /* Grosor de la línea */
+    background-color: var(--color-primary);
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); /* Animación suave */
+    transform: translateX(-50%); /* Centrar el punto de origen */
+}
+
+/* Efecto al pasar el mouse: cambia color y expande la línea */
+.nav-links a:not(.btn):hover {
+    color: var(--color-primary);
+}
+.nav-links a:not(.btn):hover::after {
+    width: 100%; /* La línea se expande a todo el ancho */
+}
+.menu-toggle { display: none; color: white; font-size: 1.5rem; cursor: pointer;}
+
+/* --- HERO SECTION (INICIO) --- */
+.hero {
+    /* --- ALTURA DINÁMICA --- */
+    min-height: 90vh;
+    
+    /* padding abajo para que los precios no queden pegados al borde final */
+    padding-bottom: 60px; 
+
+    position: relative;
+    /* El margen superior se mantiene (lo controla JS o el CSS base) */
+    margin-top: 280px; 
+    overflow: hidden;
+
+    /* ... resto de las reglas del fondo waffle ... */
+    background-color: var(--color-darker);
+    --line-orange: rgba(253, 128, 82, 0.986);
+    --grid-size: 40px;
+    background-image: 
+        repeating-linear-gradient(45deg, var(--line-orange) 0px, var(--line-orange) 1px, transparent 1px, transparent var(--grid-size)),
+        repeating-linear-gradient(-45deg, var(--line-orange) 0px, var(--line-orange) 1px, transparent 1px, transparent var(--grid-size));
+    background-size: auto;
+}
+
+/* CAPA SUPERPUESTA (Overlay) */
+.hero-overlay {
+    /* Mantenemos el resto para centrar el contenido */
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+
+.hero-content h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+    /* Sombra de texto más suave para el nuevo fondo */
+    text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
+
+.hero-content p {
+    font-size: 1.3rem;
+    margin-bottom: 2rem;
+    color: #e0e0e0;
+}
+
+/* --- CAJA DE LLAMADA A LA ACCIÓN (Delivery) - VERSIÓN FUERTE --- */
+.delivery-cta-box {
+    /* 1. Comportamiento de bloque sólido */
+    display: block !important; 
+    width: fit-content;
+    /* Asegura que no se estire más de la cuenta en móviles */
+    max-width: 90%; 
+    
+    /* 2. Centrado y margen superior forzado */
+    margin: 50px auto 20px auto !important; /* Un poco más de aire arriba */
+    text-align: center;
+    
+    /* 3. Obliga a saltar de línea si hay elementos flotantes antes */
+    clear: both;
+    
+    /* 4. Asegura su posición en el eje Z */
+    position: relative;
+    z-index: 10;
+
+    /* Estilos visuales (se mantienen igual) */
+    background: rgba(20, 20, 20, 0.4);
+    padding: 30px;
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 69, 0, 0.2);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+/* =========================================
+   NUEVA SECCIÓN DE PRECIOS EN HERO (ESTILOS)
+   ========================================= */
+
+/* Contenedor principal dentro del Hero */
+.hero-pricing-container {
+    margin: 30px auto 40px auto; /* Espaciado arriba y abajo */
+    max-width: 800px;
+    text-align: center;
+    /* Fondo semitransparente para separar del fondo waffle */
+    background: rgba(0, 0, 0, 0.6);
+    padding: 25px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+}
+
+.pricing-title {
+    font-family: var(--font-body);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 1rem;
+    color: var(--color-primary);
+    margin-bottom: 20px;
+}
+.prices-subtitle {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    color: var(--color-light);
+    margin: 25px 0 15px 0;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 20px;
+}
+
+
+/* --- ESTILOS DEL INTERRUPTOR (TOGGLE) --- */
+.pricing-toggle {
+    display: inline-flex;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50px;
+    padding: 5px;
+    position: relative;
+    margin-bottom: 30px;
+    border: 1px solid rgba(255, 69, 0, 0.3);
+}
+
+/* Ocultamos los inputs de radio reales */
+.pricing-toggle input[type="radio"] { display: none; }
+
+/* Estilo de las etiquetas que funcionan como botones */
+.toggle-label {
+    padding: 10px 25px;
+    cursor: pointer;
+    z-index: 2; /* Por encima del deslizador */
+    color: var(--color-grey);
+    transition: color 0.3s ease;
+    font-weight: 500;
+}
+.toggle-label small { display: block; font-size: 0.7rem; opacity: 0.7; font-weight: normal;}
+
+/* El fondo naranja que se desliza */
+.toggle-slider {
+    position: absolute;
+    top: 5px; left: 5px;
+    height: calc(100% - 10px);
+    width: calc(50% - 5px); /* Ocupa la mitad */
+    background: var(--color-primary);
+    border-radius: 50px;
+    transition: transform 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+    z-index: 1;
+    box-shadow: 0 2px 10px rgba(255, 69, 0, 0.4);
+}
+
+/* --- LÓGICA DEL TOGGLE (CSS PURO) --- */
+/* Si "Mostrador" está seleccionado */
+#switch-mostrador:checked ~ .toggle-label[for="switch-mostrador"] { color: white; font-weight: 700;}
+#switch-mostrador:checked ~ .toggle-slider { transform: translateX(0%); }
+
+/* Si "PedidosYa" está seleccionado */
+#switch-pedidosya:checked ~ .toggle-label[for="switch-pedidosya"] { color: white; font-weight: 700;}
+#switch-pedidosya:checked ~ .toggle-slider { transform: translateX(100%); }
+
+
+/* --- CONTROL DE CONTENIDO VISIBLE --- */
+/* Por defecto ocultamos ambos bloques */
+.pricing-content {
+    display: none;
+    animation: fadeIn 0.5s ease;
+}
+/* Mostramos el bloque correspondiente según qué radio esté marcado */
+.hero-pricing-container:has(#switch-mostrador:checked) .content-mostrador { display: block; }
+.hero-pricing-container:has(#switch-pedidosya:checked) .content-pedidosya { display: block; }
+
+@keyframes fadeIn { from { opacity: 0; transform: translateY(10px);} to { opacity: 1; transform: translateY(0);}}
+
+/* --- GRILLA DE PRECIOS (POTES) - DISEÑO UNIFORME CORREGIDO --- */
+.price-grid.pots {
+    /* Usamos Flexbox para un centrado perfecto en PC */
+    display: flex;
+    flex-wrap: wrap; /* Permite que bajen de línea en pantallas chicas */
+    justify-content: center; /* Centra todo el grupo horizontalmente */
+    gap: 15px;
+    align-items: flex-end; /* Alinea por la base */
+    margin-bottom: 25px;
+}
+
+/* Tarjeta de Precio (Todas iguales, sin resaltado) */
+.price-item {
+    background: rgba(0, 0, 0, 0.3); /* Fondo oscuro transparente uniforme */
+    padding: 15px;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column; /* Icono arriba, precio abajo */
+    align-items: center;
+    gap: 10px;
+    border: 1px solid rgba(255, 69, 0, 0.3); /* Borde naranja sutil para todos */
+    
+    /* FLEXBOX FIX PARA PC: Ancho fijo para uniformidad */
+    flex: 0 1 auto; /* No crecer, sí encogerse si es necesario */
+    width: 140px;   /* Ancho fijo ideal para PC */
+    max-width: 100%; /* Seguridad */
+}
+
+/* Nuevo Contenedor de Icono SVG */
+.price-icon-svg {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* Tamaños base relativos para escalar visualmente */
+}
+/* Tamaños proporcionales de los potes para que se note la diferencia */
+.price-icon-svg.small { width: 50px; height: 50px; }   /* 1/4 kg */
+.price-icon-svg.medium { width: 60px; height: 60px; }  /* 1/2 kg */
+.price-icon-svg.large { width: 70px; height: 70px; }   /* 3/4 kg */
+.price-icon-svg.xlarge { width: 80px; height: 80px; }  /* 1 kg */
+
+/* Estilo del SVG interno */
+.price-icon-svg svg {
+    width: 100%; height: auto;
+    /* Sombra naranja suave al pote para darle volumen */
+    filter: drop-shadow(0 2px 5px rgba(255,69,0,0.4));
+}
+
+/* Texto de peso (1/4 kg) dentro del icono */
+.price-icon-svg span {
+    position: absolute;
+    font-weight: 800;
+    font-size: 0.8rem;
+    color: white;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.8); /* Sombra fuerte para leer sobre el naranja */
+    top: 50%;
+    transform: translateY(-40%); /* Ajuste fino para centrar visualmente en el pote */
+}
+
+.price-details { text-align: center; width: 100%; }
+/* Eliminamos .price-name, el peso ya está en el icono */
+.price-value { display: block; font-size: 1.2rem; font-weight: 700; color: var(--color-primary);}
+
+
+/* --- SECCIÓN PROMOS (Sin cambios mayores) --- */
+.price-deals {
+    margin-top: 25px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+.deal-item {
+    background: rgba(0, 0, 0, 0.3); /* Mismo fondo que los precios */
+    padding: 10px 20px;
+    border-radius: 50px;
+    border: 1px solid var(--color-primary);
+    font-size: 0.95rem;
+}
+.deal-tag {
+    background: var(--color-primary); color: white;
+    padding: 2px 8px; border-radius: 10px;
+    font-size: 0.75rem; font-weight: 700; text-transform: uppercase;
+    margin-right: 8px;
+}
+
+
+/* --- GRILLA ITEMS SUELTOS (NUEVOS ICONOS SVG) - CORREGIDO DESBORDAMIENTO --- */
+.price-grid.singles {
+    /* Usamos Flexbox también aquí */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Centrado perfecto */
+    gap: 10px;
+    align-items: center;
+}
+.price-item.mini {
+    padding: 10px 15px;
+    font-size: 0.95rem;
+    flex-direction: row; /* Icono al lado del texto */
+    justify-content: start; /* Alineado a la izquierda */
+    border: 1px solid rgba(255, 69, 0, 0.2); /* Borde un poco más sutil */
+    background: rgba(0, 0, 0, 0.2); /* Fondo un poco más claro */
+    
+    /* FLEXBOX FIX PARA PC: Ancho fijo MÁS ANCHO para que entre "Cucurucho" */
+    flex: 0 1 auto;
+    width: 210px; 
+    max-width: 100%;
+}
+
+/* Clase para los nuevos iconos SVG de vasito/tacita */
+.single-icon {
+    width: 24px; height: 24px;
+    margin-right: 10px;
+    /* Sombra sutil para despegarlos del fondo */
+    filter: drop-shadow(0 1px 2px rgba(255,69,0,0.5));
+}
+/* Mantenemos esta clase para el icono de FontAwesome del cucurucho */
+.icon-orange { color: var(--color-primary); margin-right: 10px; font-size: 1.2rem;}
+
+
+/* --- SECCIÓN NOSOTROS --- */
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+.about-text p {
+    margin-bottom: 1.5rem;
+    color: var(--color-grey);
+}
+.about-image img {
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    border: 2px solid var(--color-primary);
+}
+
+/* --- SECCIÓN MENÚ (TARJETAS) --- */
+.menu-grid {
+    display: grid;
+    /* Crea columnas automáticas, mínimo 250px de ancho */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+.menu-card {
+    background-color: #1a1a1a;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    border: 1px solid #333;
+}
+.menu-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--color-primary);
+}
+.menu-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover; /* Evita que la imagen se deforme */
+}
+.menu-card-content {
+    padding: 1.5rem;
+}
+.menu-card-content h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    color: var(--color-primary);
+}
+.menu-card-content p {
+    color: var(--color-grey);
+    font-size: 0.9rem;
+}
+
+/* --- SECCIÓN UBICACIÓN E INFO --- */
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+.info-card {
+    background-color: var(--color-darker);
+    padding: 2rem;
+    text-align: center;
+    border-radius: 10px;
+    border: 1px solid #333;
+}
+.info-icon {
+    font-size: 2.5rem;
+    color: var(--color-primary);
+    margin-bottom: 1rem;
+}
+.info-card h3 {
+    margin-bottom: 1rem;
+    font-family: var(--font-body);
+}
+.info-card p {
+    color: var(--color-grey);
+}
+.map-container iframe {
+    border-radius: 10px;
+    filter: grayscale(30%) invert(80%) contrast(95%); /* Mapa estilo oscuro */
+    border: 2px solid #333;
+}
+
+/* --- FOOTER --- */
+footer {
+    background-color: #000000;
+    padding: 3rem 0;
+    text-align: center;
+    border-top: 3px solid var(--color-primary);
+}
+.footer-logo {
+    height: 100px;
+    margin: 0 auto 1.5rem auto;
+    opacity: 0.7;
+}
+footer p { color: var(--color-grey); font-size: 0.9rem;}
+.footer-disclaimer { color: var(--color-primary); font-weight: 700; margin-top: 10px;}
+
+/* =========================
+   NUEVOS ESTILOS DE CARTEL DE ESTADO (PREMIUM)
+   ========================= */
+
+/* CONTENEDOR PRINCIPAL DEL BADGE */
+.status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 25px;
+    /* --- ESPACIO SUPERIOR E INFERIOR AGREGADO --- */
+    margin-top: 40px;
+    margin-bottom: 20px;
+    /* Fondo de vidrio oscuro */
+    background: rgba(20, 20, 20, 0.7);
+    /* Efecto de borrosidad en el fondo (Glassmorphism) */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 50px;
+    color: white;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    letter-spacing: 1.5px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3); /* Sombra suave */
+    transition: all 0.3s ease;
+}
+
+/* EL PUNTITO DE COLOR */
+.status-dot {
+    height: 12px; width: 12px;
+    border-radius: 50%;
+    display: inline-block;
+    position: relative;
+}
+
+/* ANIMACIÓN DE LATIDO PARA EL PUNTO */
+@keyframes pulse-dot {
+    0% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.5); opacity: 0.5; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+/* --- ESTADO: ABIERTO --- */
+.status-badge.abierto {
+    border-color: #2ecc71; /* Borde verde vibrante */
+    color: #2ecc71;
+    /* Resplandor verde alrededor de todo el cartel */
+    box-shadow: 0 0 20px rgba(46, 204, 113, 0.4), inset 0 0 10px rgba(46, 204, 113, 0.2);
+}
+.status-badge.abierto .status-dot {
+    background-color: #2ecc71;
+    box-shadow: 0 0 10px #2ecc71, 0 0 20px #2ecc71; /* Doble brillo intenso */
+}
+/* Aplicamos la animación al punto verde */
+.status-badge.abierto .status-dot::after {
+    content: '';
+    position: absolute; width: 100%; height: 100%;
+    top: 0; left: 0; border-radius: 50%;
+    background: #2ecc71;
+    animation: pulse-dot 2s infinite ease-in-out;
+    z-index: -1;
+}
+
+
+/* --- ESTADO: CERRADO --- */
+.status-badge.cerrado {
+    border-color: #e74c3c; /* Borde rojo */
+    color: #e74c3c;
+    /* Resplandor rojo más sutil */
+    box-shadow: 0 0 15px rgba(231, 76, 60, 0.3), inset 0 0 5px rgba(231, 76, 60, 0.1);
+    opacity: 0.9;
+}
+.status-badge.cerrado .status-dot {
+    background-color: #e74c3c;
+    box-shadow: 0 0 8px #e74c3c;
+}
+
+/* --- ESTADO: CARGANDO (Gris neutral) --- */
+.status-badge.loading {
+    border-color: #666; color: #ccc;
+}
+.status-badge.loading .status-dot {
+    background-color: #666; animation: pulse-dot 1.5s infinite;
+}
+
+
+/* --- AVISO MANUAL DE EMERGENCIA (Estilo Neón Dorado) --- */
+.aviso-diario {
+    /* Fondo oscuro con tinte dorado */
+    background: linear-gradient(45deg, rgba(255, 193, 7, 0.1), rgba(255, 193, 7, 0.2));
+    border: 2px solid #ffc107; /* Borde dorado más grueso */
+    color: #ffc107;
+    padding: 12px 25px;
+    border-radius: 12px;
+    margin-top: 10px;
+    font-size: 1rem;
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    /* Resplandor dorado intenso */
+    box-shadow: 0 0 15px rgba(255, 193, 7, 0.5), inset 0 0 10px rgba(255, 193, 7, 0.2);
+    text-shadow: 0 0 5px rgba(255, 193, 7, 0.7); /* Texto brillante */
+    backdrop-filter: blur(5px);
+}
+.aviso-diario i { font-size: 1.2rem; } /* Ícono un poco más grande */
+
+
+/* =========================================
+   RESPONSIVE (CELULARES) - HEADER ULTRA COMPACTO
+   ========================================= */
+@media (max-width: 768px) {
+
+    /* 1. HEADER MÓVIL SIN ESPACIO EXTRA */
+    header {
+        padding: 5px 0; /* Padding mínimo para que sea bien compacto */
+    }
+
+    .nav-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+    }
+
+
+    /* 2. LOGO CENTRAL Y LUCES EXPANDIDAS */
+    .logo-link {
+        flex-basis: auto;
+        max-width: none;
+        padding: 4px 0; /* Menos espacio entre el logo y sus luces */
+        margin: 0 auto;
+    }
+    
+    .nav-logo {
+        max-height: 135px; /* Mantenemos el tamaño que te gustó */
+    }
+    
+    /* ¡LUCES MUCHO MÁS ANCHAS EN MÓVIL! */
+    .logo-link::before, .logo-link::after {
+        width: 180%; /* Se extienden casi el doble que el logo */
+        max-width: 380px; /* Tope ancho para que no rompan la pantalla */
+    }
+
+
+    /* 3. BOTÓN HAMBURGUESA */
+    .menu-toggle {
+        display: block;
+        color: white;
+        font-size: 2rem;
+        cursor: pointer;
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 1002;
+    }
+
+
+    /* 4. MENÚ DESPLEGABLE (CONTENEDOR) */
+    .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        /* Fondo oscuro con un poco de transparencia para elegancia */
+        background-color: rgba(15, 15, 15, 0.98); 
+        flex-direction: column;
+        align-items: center;
+        padding: 30px 20px; /* Padding a los costados también */
+        border-bottom: 2px solid var(--color-primary);
+        z-index: 1000;
+        box-shadow: 0 15px 30px rgba(0,0,0,0.5);
+        backdrop-filter: blur(10px);
+    }
+    .nav-links.active { display: flex; }
+
+    /* Espacio entre cada ítem */
+    .nav-links li {
+        margin: 10px 0; /* Más juntos */
+        width: 100%;
+        max-width: 350px; /* Ancho máximo controlado */
+        /* Asegura que el contenido interno (como el botón) se centre */
+        display: flex;
+        justify-content: center;
+    }
+
+    /* --- ESTILO NUEVO: BOTONES CUADRADOS ELEGANTES --- */
+    .nav-links li a:not(.btn) {
+         display: block; /* Ocupa todo el ancho disponible */
+         width: 100%;
+         padding: 15px 20px; /* Botón grande y cómodo */
+         
+         /* Estilo cuadrado con esquinas suaves */
+         background-color: rgba(255, 255, 255, 0.03);
+         border: 1px solid var(--color-primary);
+         border-radius: 12px; /* <-- CAMBIO AQUÍ: Cuadrado redondeado (antes 50px) */
+         
+         /* Tipografía */
+         color: var(--color-light);
+         font-size: 1.1rem;
+         font-weight: 700;
+         text-transform: uppercase;
+         letter-spacing: 2px;
+         text-align: center;
+         
+         transition: all 0.3s ease;
+    }
+
+    /* Eliminamos la línea inferior del diseño anterior por si quedó */
+    .nav-links li a:not(.btn)::after { content: none; }
+
+
+    /* --- FEEDBACK AL TOCAR (:active) ENLACES NORMALES --- */
+    .nav-links li a:not(.btn):active {
+        background-color: var(--color-primary);
+        transform: scale(0.98);
+    }
+
+    /* ---  BOTÓN "PEDIR AHORA" EN MÓVIL --- */
+    /* Hacemos que el botón también ocupe el ancho completo y se centre */
+    .nav-links li .btn {
+        display: block;
+        width: 100%; /* Ocupa todo el ancho del contenedor (max 350px) */
+        text-align: center;
+        margin-top: 20px; /* Un poco más de espacio antes del botón principal */
+        border-radius: 12px; /* Que coincida con la forma de los otros */
+    }
+
+    /* 5. AJUSTES DE MARGEN Y SCROLL */
+    .hero { margin-top: 150px; }
+
+    /* Al bajar, se hace aún más finito */
+    header.scrolled .nav-logo { max-height: 70px; }
+    header.scrolled { padding: 2px 0; }
+
+
+    /* Ajustes generales */
+    .hero h1 { font-size: 2.2rem; }
+    .modal-grid { grid-template-columns: 1fr 1fr; }
+    .info-grid { flex-direction: column; gap: 30px; }
+
+    /* --- SECCIÓN NOSOTROS (FACHADA) EN MÓVIL --- */
+    .about-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        text-align: center;
+    }
+    .about-image {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+    }
+    .about-image img {
+        max-height: 450px;
+        width: auto;
+        max-width: 100%;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    }
+    
+    /* AJUSTE RESPONSIVE PARA PRECIOS EN CELULAR */
+    .hero-pricing-container { padding: 15px; }
+    .toggle-label { padding: 8px 15px; font-size: 0.9rem; }
+    
+    /* En celulares chicos, volvemos a grid de 2 columnas para los potes */
+    .price-grid.pots { 
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+    /* Los items vuelven a ocupar el ancho de la celda de la grilla */
+    .price-grid.pots .price-item { width: auto; }
+
+    /* Reducimos escala de iconos en móvil */
+    .price-icon-svg.small { width: 40px; height: 40px; }
+    .price-icon-svg.medium { width: 50px; height: 50px; }
+    .price-icon-svg.large { width: 60px; height: 60px; }
+    .price-icon-svg.xlarge { width: 70px; height: 70px; }
+    .price-value { font-size: 1rem; }
+
+    /* --- NUEVO: EFECTOS ESPECIALES PARA MÓVIL --- */
+
+    /* 1. Botón "PEDIR AHORA" con destello automático */
+    .btn-pedidosya {
+        overflow: hidden; /* Asegura que el brillo no se salga */
+        position: relative;
+    }
+
+    /* Usamos el elemento ::before que ya creamos para el hover en PC,
+       pero en móvil lo animamos automáticamente */
+    .btn-pedidosya::before {
+        content: '';
+        position: absolute;
+        top: 0; left: -100%;
+        width: 50%; /* Un destello más angosto */
+        height: 100%;
+        /* Luz blanca diagonal suave */
+        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+        transform: skewX(-20deg); /* Inclinamos la luz */
+        z-index: 1;
+        /* La animación corre infinitamente cada 4 segundos */
+        animation: mobile-button-shine 4s infinite ease-in-out;
+        /* Retraso inicial para que no arranque de golpe */
+        animation-delay: 1s;
+    }
+
+    /* 2. Feedback táctil inmediato (cuando tocan con el dedo) */
+    .btn-pedidosya:active {
+        transform: scale(0.97); /* Se achica un poquito al tocar */
+        box-shadow: 0 2px 8px rgba(255, 69, 0, 0.3); /* Sombra más chica */
+        transition: 0.1s; /* Reacción instantánea */
+    }
+
+    /* Hacemos lo mismo para los enlaces del menú para que se sienta reactivo */
+    .nav-links a:not(.btn):active {
+         color: var(--color-primary);
+         transform: scale(0.95);
+    }
+
+    /* --- ESPACIADO DE BOTONES DE FILTRO EN MÓVIL --- */
+    /* Usamos !important para obligar al navegador a aplicar este espacio */
+    .menu-tabs .tab-btn {
+        margin: 12px 15px !important; /* Mucho más espacio a los costados y arriba/abajo */
+        padding: 12px 25px !important; /* Botón más grande para el dedo */
+        display: inline-block !important; /* Asegura que respete los márgenes verticales */
+    }
+
+} /* <-- Fin del bloque media query */
+
+
+/* Ventana Modal (Fondo oscuro transparente) */
+.modal-overlay {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.95); /* Fondo muy oscuro */
+    z-index: 2000; /* Por encima de todo */
+    display: none; /* Oculto por defecto */
+    justify-content: center;
+    align-items: flex-start;
+    overflow-y: auto; /* Permite bajar si el menú es largo */
+    padding: 40px 0;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.modal-overlay.active {
+    display: flex;
+    opacity: 1;
+}
+
+/* Caja del contenido del menú */
+.modal-content {
+    width: 90%;
+    max-width: 1000px;
+    background-color: var(--color-darker); /* Usa tu color de fondo original */
+    padding: 30px;
+    border-radius: 15px;
+    position: relative;
+    border: 1px solid #333;
+    box-shadow: 0 0 50px rgba(255, 69, 0, 0.1);
+}
+
+/* Botón de cerrar (X) */
+.close-modal {
+    position: absolute;
+    top: 15px; right: 20px;
+    font-size: 2.5rem;
+    color: var(--color-light);
+    background: none; border: none; cursor: pointer;
+    line-height: 1;
+}
+.close-modal:hover { color: var(--color-primary); }
+
+.modal-header { text-align: center; margin-bottom: 30px; }
+.modal-header h2 { color: var(--color-primary); font-family: var(--font-heading); font-size: 2.5rem; }
+.modal-header p { color: var(--color-grey); }
+
+/* Pestañas de Filtros (Cremas / Frutales) */
+.menu-tabs { text-align: center; margin-bottom: 30px; }
+.tab-btn {
+    background: transparent;
+    border: 1px solid #444;
+    color: var(--color-light);
+    padding: 10px 25px; margin: 0 5px;
+    border-radius: 50px; cursor: pointer;
+    font-family: var(--font-body);
+    transition: 0.3s;
+}
+.tab-btn.active, .tab-btn:hover {
+    background: var(--color-primary);
+    border-color: var(--color-primary);
+}
+
+/* Grilla de Sabores */
+.modal-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 20px;
+}
+.sabor-item {
+    background: #1a1a1a;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid #333;
+    transition: 0.2s;
+}
+.sabor-item:hover { border-color: var(--color-primary); transform: translateY(-3px);}
+
+.sabor-img-box {
+    height: 140px;
+    position: relative;
+    overflow: hidden;
+}
+.sabor-img-box img { width: 100%; height: 100%; object-fit: cover; }
+
+/* El logito pequeño en la esquina de la foto */
+.mini-logo {
+    position: absolute; bottom: 5px; right: 5px;
+    width: 25px; height: 25px;
+    background: rgba(0,0,0,0.8);
+    border-radius: 50%; padding: 4px;
+    border: 1px solid var(--color-primary);
+}
+
+.sabor-info { padding: 15px; text-align: left; }
+.sabor-info h3 { font-size: 0.95rem; color: var(--color-primary); margin-bottom: 5px; font-family: var(--font-body); font-weight: 700;}
+.sabor-info p { font-size: 0.8rem; color: #999; line-height: 1.3; }
+
+.modal-footer-action {
+    text-align: center; margin-top: 40px; padding-top: 20px;
+    border-top: 1px solid #333;
+}
+
+/* --- ANIMACIÓN DE DESTELLO PARA MÓVIL --- */
+@keyframes mobile-button-shine {
+    0% { left: -100%; opacity: 0; }
+    20% { opacity: 0.3; }
+    100% { left: 100%; opacity: 0; }
+}
